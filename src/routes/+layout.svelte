@@ -2,6 +2,10 @@
     import "../app.css"
 </script>
 
+<svelte:head>
+    <title>Owl or Lark?</title>
+</svelte:head>
+
 <div class="flex flex-col h-screen">
     <div>
         <div class="ml-2 mt-2 float-left">
