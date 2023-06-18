@@ -10,8 +10,17 @@
     }
 
     function reload() {
-        window.location.reload();
         window.scrollTo(0,0);
+
+        let form = document.querySelector("#form");
+        if (form == null) {
+            console.log("error: form not found");
+            return;
+        }
+
+        (form as HTMLFormElement).reset();
+
+        setTimeout(set_invisible, 1000);
     }
 
     function set_lark() {
@@ -36,6 +45,13 @@
         let hidden = document.querySelector<HTMLElement>("#hidden");
         if (hidden != null) {
             hidden.style.display = "block";
+        }
+    }
+
+    function set_invisible() {
+        let hidden = document.querySelector<HTMLElement>("#hidden");
+        if (hidden != null) {
+            hidden.style.display = "";
         }
     }
 
@@ -111,7 +127,7 @@ It is important to remember to not get hung up on sleep quantity, but focus on s
 </script>
 
 <div class="w-screen bg-slate-50 m-6 py-1 px-2">
-    <form on:submit|preventDefault={submit}>
+    <form on:submit|preventDefault={submit} id="form">
         <Question q="If you could get up when you choose, would you prefer to wake:"
             lark="Bright and early, before 7.30am"
             neutral="Between 7.30am and 9am, you don't want to waste the day"
@@ -145,9 +161,11 @@ It is important to remember to not get hung up on sleep quantity, but focus on s
     </form>
 
     <div id="hidden" class="w-96">
+        <p class="desktop mt-6 text-lg">Hover to see a description of your chronotype</p>
+        <p class="mobile">Tap to see a description of your chronotype</p>
         <FlipCard {src} {text} {alt} />
         <div class="w-full flex flex-row">
-            <button type="button" class="text-xl button" on:click={reload}>Retake form</button>
+            <button type="button" class="text-xl button" on:click={reload}>Reset form</button>
         </div>
     </div>
 </div>

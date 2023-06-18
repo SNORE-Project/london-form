@@ -10,3 +10,15 @@
 html {
     background-color: purple;
 }
+
+@media screen and (max-device-width: 1024px) {
+    .desktop {
+        display: none !important;
+    }
+}
+
+@media screen and (min-device-width: 1025px) {
+    .mobile {
+        display: none !important;
+    }
+}

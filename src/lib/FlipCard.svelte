@@ -4,7 +4,7 @@
     export let alt: string;
 </script>
 
-<div class="w-96 h-96 perspective mt-4 mb-2" id="outer">
+<div class="w-96 h-96 perspective mt-2 mb-2" id="outer">
     <div class="transition-transform duration-[0.6s] text-center" id="inner">
         <div class="border-2 border-purple-900 rounded" id="front">
             <img {src} {alt} />
